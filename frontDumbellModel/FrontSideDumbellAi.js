@@ -12,8 +12,6 @@ var Angle_Between_RightWrist_RightShoulder=0;
 var StartExcercise="";
 function draw()
 {
-    //translate(video.width,0);
-    //scale(-1,1);
     var xScale=100;
     image(video,0-xScale,0,video.width,video.height);
     if(pose&&(state=="collection"))
@@ -24,25 +22,28 @@ function draw()
         }
 
         textString="";
-        if((pose.rightHip.confidence*100>accuracyOfPoseNet)&&(pose.rightShoulder.confidence*100>accuracyOfPoseNet)&&(pose.rightElbow.confidence*100>accuracyOfPoseNet)&&(pose.rightWrist.confidence*100>accuracyOfPoseNet))
+        if(/*(pose.rightHip.confidence*100>accuracyOfPoseNet)&&*/(pose.rightShoulder.confidence*100>accuracyOfPoseNet)&&(pose.rightElbow.confidence*100>accuracyOfPoseNet)&&(pose.rightWrist.confidence*100>accuracyOfPoseNet))
         {
             //good accuracy os pose net
 
             var standing = findANGLEComplete(pose.rightHip.x, pose.rightHip.y, pose.rightShoulder.x, pose.rightShoulder.y)
-            if ((standing < -80) && (standing > -109))
+         //90,108
+            if ((standing < -90) && (standing > -108))
             {
+
                 //user is  staight position
 
                 //textString="Good Standing position=" + standing+'",";
-                var ArmISStill = findANGLEComplete(pose.rightElbow.x, pose.rightElbow.y, pose.rightShoulder.x, pose.rightShoulder.y);
-
-                if((ArmISStill < -70) && (ArmISStill > -115))
+               // var ArmISStill = findANGLEComplete(pose.rightElbow.x, pose.rightElbow.y, pose.rightShoulder.x, pose.rightShoulder.y);
+                var ArmISStill = findANGLEComplete(pose.leftElbow.x, pose.leftElbow.y, pose.leftShoulder.x, pose.leftShoulder.y);
+                //right 70,90
+                if((ArmISStill < -70) && (ArmISStill > -90))
                 {
                     //arm is still there position
 
                     // textString+=",good ARM,";
 
-                    if(IsArmMoveCorrectlyInExcercise())
+                   /* if(IsArmMoveCorrectlyInExcercise())
                     {
                         //user arm is in the excercise
 
@@ -140,7 +141,7 @@ function draw()
                         //user is not doing arm excercise properly
                         textString+="<br>elbow angle out of excercise,"+Angle_Between_RightWrist_RightShoulder;
                         SetInitialPosition();
-                    }
+                    }*/
 
 
                 }
