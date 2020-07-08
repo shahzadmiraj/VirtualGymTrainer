@@ -41,122 +41,101 @@ function draw()
                 {
                     //arm is still there position
 
-                   // textString+=",good ARM,";
+                    // textString+=",good ARM,";
 
-                      if(stepDirection=="UpWordDirection")
-                      {
-                          // moving arm upword direction
+                    if(stepDirection=="UpWordDirection")
+                    {
+                        // moving arm upword direction
 
-                          Angle_Between_RightWrist_RightShoulder= Math.floor(angle(pose.rightWrist.x, pose.rightWrist.y,pose.rightElbow.x, pose.rightElbow.y,pose.rightShoulder.x, pose.rightShoulder.y)[1]);
+                        Angle_Between_RightWrist_RightShoulder= Math.floor(angle(pose.rightWrist.x, pose.rightWrist.y,pose.rightElbow.x, pose.rightElbow.y,pose.rightShoulder.x, pose.rightShoulder.y)[1]);
 
-                          if(InitialMovement=="YesInitialMovement")
-                          {
-                              // initial point set to 170 angle first
+                        if(InitialMovement=="YesInitialMovement")
+                        {
+                            // initial point set to 170 angle first
 
-                              if(IsAngleTouchHip())
-                              {
-                                  //user doing arm excercise properly
-                                  textString+="<br>Let Start Excercise";
-                                  if(IsCurrentAngleIncrease()==false)
-                                  {
-                                      InitialMovement="NoInitialMovement";
-                                      CountOfWarningMovingArm=0;
-                                  }
-                                  else
-                                  {
-                                      SetInitialPosition();
-                                  }
-                              }
-                              else
-                              {
-                                  //user is not doing arm excercise properly
-                                  textString+="<br>Please Set initial position"+Angle_Between_RightWrist_RightShoulder;
-                                  SetInitialPosition();
-                              }
+                            if(IsAngleTouchHip())
+                            {
+                                //user doing arm excercise properly
+                                textString+="<br>Let Start Excercise";
+                                if(IsCurrentAngleIncrease()==false)
+                                {
+                                    InitialMovement="NoInitialMovement";
+                                    CountOfWarningMovingArm=0;
+                                }
+                                else
+                                {
+                                    SetInitialPosition();
+                                }
+                            }
+                            else
+                            {
+                                //user is not doing arm excercise properly
+                                textString+="<br>Please Set initial position"+Angle_Between_RightWrist_RightShoulder;
+                                SetInitialPosition();
+                            }
 
-                          }
-                          else
-                          {
-                              // not initial point set to 170 angle first
-                              if(IsArmMoveCorrectlyInExcercise())
-                              {
-                                  //user doing arm excercise properly
-                                   if(IsCurrentAngleIncrease()==false)
-                                  {
-                                      //angle improve itself by degree decrease when user move arm upward
-                                      if(IsAngleTouchShoulder())
-                                      {
-                                          // if user arm get  peak angle now start move down word direction
-                                          textString+="<br>Now Move Down Worddddddd ";
-                                          stepDirection="DownWordDirection";
-                                          InitialMovement="YesInitialMovement";
-                                          CountOfWarningMovingArm=0;
-                                          Previouse_Angle_Between_RightWrist_RightShoulder=0;
-                                      }
-                                      else
-                                      {
+                        }
+                        else
+                        {
+                            // not initial point set to 170 angle first
+                            if(IsArmMoveCorrectlyInExcercise())
+                            {
+                                //user doing arm excercise properly
+                                if(IsCurrentAngleIncrease()==false)
+                                {
+                                    //angle improve itself by degree decrease when user move arm upward
+                                    if(IsAngleTouchShoulder())
+                                    {
+                                        // if user arm get  peak angle now start move down word direction
+                                        textString+="<br>Now Move Down Worddddddd ";
+                                        stepDirection="DownWordDirection";
+                                        InitialMovement="YesInitialMovement";
+                                        CountOfWarningMovingArm=0;
+                                        Previouse_Angle_Between_RightWrist_RightShoulder=0;
+                                    }
+                                    else
+                                    {
 
-                                          // if user arm does not  get peak angle now start moving up word direction
-                                          textString+="<br>Good Move Upword "+Angle_Between_RightWrist_RightShoulder;
-                                          Previouse_Angle_Between_RightWrist_RightShoulder=Angle_Between_RightWrist_RightShoulder;
-                                          CountOfWarningMovingArm=0;
-                                      }
+                                        // if user arm does not  get peak angle now start moving up word direction
+                                        textString+="<br>Good Move Upword "+Angle_Between_RightWrist_RightShoulder;
+                                        Previouse_Angle_Between_RightWrist_RightShoulder=Angle_Between_RightWrist_RightShoulder;
+                                        CountOfWarningMovingArm=0;
+                                    }
 
-                                  }
-                                  else if(IsMarginApply())
-                                  {
-                                      //user move down word arm or still contant position does not improve angle
-                                      warningOrError();
-                                  }
-                                  else
-                                  {
-                                      //if user move full downward direction then initial position set
-                                      textString+="<br> Please agian start Excercise Due to Completely wrong Down word direction,";
-                                      SetInitialPosition();
-                                  }
+                                }
+                                else if(IsMarginApply())
+                                {
+                                    //user move down word arm or still contant position does not improve angle
+                                    warningOrError();
+                                }
+                                else
+                                {
+                                    //if user move full downward direction then initial position set
+                                    textString+="<br> Please agian start Excercise Due to Completely wrong Down word direction,";
+                                    SetInitialPosition();
+                                }
 
-                              }
-                              else
-                              {
-                                  //user is not doing arm excercise properly
-                                  textString+="<br>elbow angle out of excercise,"+Angle_Between_RightWrist_RightShoulder;
-                                  SetInitialPosition();
-                              }
+                            }
+                            else
+                            {
+                                //user is not doing arm excercise properly
+                                textString+="<br>elbow angle out of excercise,"+Angle_Between_RightWrist_RightShoulder;
+                                SetInitialPosition();
+                            }
 
-                          }
+                        }
 
-                      }
-                      else
-                      {
+                    }
+                    else
+                    {
 
-    }
-    else
-    {
-        // not initial point set to 170 angle first
-        if(IsArmMoveCorrectlyInExcercise())
-        {
-            //user doing arm excercise properly
-            if(IsCurrentAngleIncrease()==true)
-            {
-                //angle improve itself by degree increase when user move arm downword
-                if(IsAngleTouchHip())
-                {
-                    // if user arm get  peak angle now start move up word direction
-                    textString+="<br>Now Move Up Word Direction ";
-                    SetInitialPosition();
-                    Previouse_Angle_Between_RightWrist_RightShoulder=200;
-                    CountOfPerfectStep=CountOfPerfectStep+1;
-                    textString+="<br>Hurrrrrryyyy  "+CountOfPerfectStep;
-                }
-                else
-                {
 
-                          MovingArmDownwordDirection();
+                        MovingArmDownwordDirection();
 
-                          // moving arm downword direction
-                          textString+="<br>moving arm downword direction ,"+ArmISStill;
+                        // moving arm downword direction
+                        textString+="<br>moving arm downword direction ,"+ArmISStill;
 
-                      }
+                    }
 
                 }
                 else
@@ -208,105 +187,6 @@ function draw()
         }
     }
 
-            }
-            else if(IsMarginApply())
-            {
-                //user move down word arm or still contant position does not improve angle
-                warningOrError();
-            }
-            else
-            {
-                //if user move full downward direction then initial position set
-                textString+="<br> Please agian start Excercise Due to Completely wrong up word direction,";
-                SetInitialPosition();
-            }
-
-        }
-        else
-        {
-            //user is not doing arm excercise properly
-            textString+="<br>elbow angle out of excercise,"+Angle_Between_RightWrist_RightShoulder;
-            SetInitialPosition();
-        }
-
-    }
-
-}
-
-
-function warningOrError()
-{
-    if(CountOfWarningMovingArm<5)
-    {
-        textString+="<br>Warning please when "+stepDirection+Previouse_Angle_Between_RightWrist_RightShoulder;
-        CountOfWarningMovingArm=CountOfWarningMovingArm+1;
-    }
-    else
-    {
-        //if user doesnot improve angle more then 3 time warning then set initial position
-        textString+="<br> Please agian start Excercise due to More then Warning Found during"+stepDirection+Previouse_Angle_Between_RightWrist_RightShoulder;
-        SetInitialPosition();
-
-    }
-
-}
-
-function SetInitialPosition()
-{
-    textString+="Again Start with  initial position,";
-    CountOfWarningMovingArm=0;
-    InitialMovement="YesInitialMovement";
-    stepDirection="UpWordDirection";
-}
-
-function IsCurrentAngleIncrease()
-{
-    var state=false;
-    if(Previouse_Angle_Between_RightWrist_RightShoulder<Angle_Between_RightWrist_RightShoulder)
-    {
-        state=true;
-    }
-    //Previouse_Angle_Between_RightWrist_RightShoulder=Angle_Between_RightWrist_RightShoulder;
-    return state;
-}
-function IsAngleTouchShoulder()
-{
-
-    if(Angle_Between_RightWrist_RightShoulder<50 && Angle_Between_RightWrist_RightShoulder>40)
-    {
-
-        return true;
-    }
-    return false;
-}
-function IsAngleTouchHip()
-{
-    if(Angle_Between_RightWrist_RightShoulder<180 && Angle_Between_RightWrist_RightShoulder>150)
-    {
-        return true;
-    }
-    return false;
-}
-function IsArmMoveCorrectlyInExcercise()
-{
-    if(Angle_Between_RightWrist_RightShoulder<180 && Angle_Between_RightWrist_RightShoulder>40)
-    {
-        return true;
-    }
-    return false;
-}
-function IsMarginApply()
-{
-    var margin=Previouse_Angle_Between_RightWrist_RightShoulder-Angle_Between_RightWrist_RightShoulder;
-
-    if(margin<0)
-        margin=margin*-1;
-   textString+="p"+Previouse_Angle_Between_RightWrist_RightShoulder+"C="+Angle_Between_RightWrist_RightShoulder+",Marging is set"+margin;
-    if(margin<=2&&margin>=0)
-    {
-        return true;
-    }
-    return false;
 }
 
 
@@ -399,11 +279,7 @@ function MovingArmDownwordDirection()
             SetInitialPosition();
         }
 
-                    // if user arm does not  get peak angle now start moving up word direction
-                    textString+="<br>Good Move Downword "+Angle_Between_RightWrist_RightShoulder;
-                    Previouse_Angle_Between_RightWrist_RightShoulder=Angle_Between_RightWrist_RightShoulder;
-                    CountOfWarningMovingArm=0;
-                }
+    }
 
 }
 
@@ -475,7 +351,7 @@ function IsMarginApply()
 
     if(margin<0)
         margin=margin*-1;
-   textString+="p"+Previouse_Angle_Between_RightWrist_RightShoulder+"C="+Angle_Between_RightWrist_RightShoulder+",Marging is set"+margin;
+    textString+="p"+Previouse_Angle_Between_RightWrist_RightShoulder+"C="+Angle_Between_RightWrist_RightShoulder+",Marging is set"+margin;
     if(margin<=2&&margin>=0)
     {
         return true;
