@@ -55,7 +55,8 @@ function IsAngleTouchHip()
 function IsArmMoveCorrectlyInExcercise()
 {
     Angle_Between_RightWrist_RightShoulder= angle(pose.rightWrist.x, pose.rightWrist.y,pose.rightElbow.x, pose.rightElbow.y,pose.rightShoulder.x, pose.rightShoulder.y)[1];
-    if((Angle_Between_RightWrist_RightShoulder<180) && (Angle_Between_RightWrist_RightShoulder>30))
+    //180 , 30
+    if((Angle_Between_RightWrist_RightShoulder<0) && (Angle_Between_RightWrist_RightShoulder>0))
     {
         return true;
     }
@@ -87,7 +88,8 @@ function IsMarginApplyAtDowndirection()
 
 
 
-function PoseNetCalculateAccuracy() {
+function PoseNetCalculateAccuracy()
+{
     textString+="<br>Pose Net accuracy not good<br>";
     if(pose.rightHip.confidence*100<accuracyOfPoseNet)
     {

@@ -36,7 +36,8 @@ function setup()
    background(51);
   //video = createVideo("../../videos/Bicep_Curls.mp4");//Bicep_Curls.mp4,"../../videos/Bicep_Curls.mp4"
 
-    video =  createCapture(VIDEO);
+     video = createVideo("videos/frontside1.mp4");
+   // video =  createCapture(VIDEO);
    // video = createVideo("../../videos/myOwn.mp4");
 
     //video.size(500,600);
