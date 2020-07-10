@@ -1,3 +1,4 @@
+
 var findAngle = function (ax, ay, bx, by) {
     var aDotb=(ax*bx)+(ay*by);
     var magnitudeofA=Math.abs(Math.sqrt((ax*ax)+(ay*ay)));
@@ -14,3 +15,4 @@ var findANGLEComplete= function(ax, ay, bx, by)
 var standingposition=function () {
 
 }
+

@@ -1,4 +1,6 @@
 
+
+
 function warningOrError()
 {
     if(CountOfWarningMovingArm<10)

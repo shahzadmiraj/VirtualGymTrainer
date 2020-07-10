@@ -39,6 +39,7 @@ function draw()
 
                 if((ArmISStill > 70) && (ArmISStill < 115))
                 {
+
                     //arm is still there position
 
                     // textString+=",good ARM,";

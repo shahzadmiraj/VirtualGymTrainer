@@ -1,3 +1,4 @@
+
 function GetSide(Fx,Fy,Sx,Sy)
 {
     return Math.sqrt(Math.pow((Fx-Sx),2)+Math.pow((Fy-Sy),2))

@@ -1,4 +1,5 @@
 
+
 let video;
 let poseNet;
 let pose;
@@ -10,7 +11,7 @@ var canvas;
 function setup()
 {
     text=createElement('h1', 'start');
-    canvas=createCanvas(820,500);
+    canvas=createCanvas(1000,800);
     canvas.parent('canvax');
    background(51);
   //video = createVideo("../../videos/Bicep_Curls.mp4");//Bicep_Curls.mp4,"../../videos/Bicep_Curls.mp4"
@@ -19,7 +20,7 @@ function setup()
    video =  createCapture(VIDEO);
    // video = createVideo("../../videos/myOwn.mp4");
 
-    //video.size(820,500);
+    video.size(1000,800);
    video.hide();
     poseNet=ml5.poseNet(video,modelLoad);
     poseNet.on('pose',getPoses);
@@ -43,5 +44,4 @@ function getPoses(poses)
 
     }
 }
-
 
