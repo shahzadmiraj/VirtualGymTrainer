@@ -1,5 +1,5 @@
 
-let accuracyOfPoseNet=10;
+let accuracyOfPoseNet=20;
 var Previouse_Angle_Between_RightWrist_RightShoulder=200;
 var stepDirection="UpWordDirection";
 var InitialMovement="YesInitialMovement";
@@ -30,7 +30,7 @@ function draw()
             //good accuracy os pose net
 
             var standing = Math.abs( findANGLEComplete(pose.leftHip.x, pose.leftHip.y, pose.leftShoulder.x, pose.leftShoulder.y));
-            if ((standing > 80) && (standing <109))
+            if ((standing > 75) && (standing <109))
             {
                 //user is  staight position
 

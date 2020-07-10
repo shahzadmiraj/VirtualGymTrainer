@@ -54,8 +54,8 @@ function IsAngleTouchHip()
 }
 function IsArmMoveCorrectlyInExcercise()
 {
-    Angle_Between_RightWrist_RightShoulder= angle(pose.rightWrist.x, pose.rightWrist.y,pose.rightElbow.x, pose.rightElbow.y,pose.rightShoulder.x, pose.rightShoulder.y)[1];
-    if((Angle_Between_RightWrist_RightShoulder<199) && (Angle_Between_RightWrist_RightShoulder>10))
+    Angle_Between_RightWrist_RightShoulder= angle(pose.leftWrist.x, pose.leftWrist.y,pose.leftElbow.x, pose.leftElbow.y,pose.leftShoulder.x, pose.leftShoulder.y)[1];
+    if((Angle_Between_RightWrist_RightShoulder<180) && (Angle_Between_RightWrist_RightShoulder>30))
     {
         return true;
     }
