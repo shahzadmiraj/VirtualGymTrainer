@@ -31,16 +31,17 @@ function  preload() {
 
 function setup()
 {
-    text=createElement('h1', 'right elbow');
-    canvas=createCanvas(1020,1200);
+    text=createElement('h1', 'start');
+    canvas=createCanvas(820,500);
+    //canvas.parent('canvax');
    background(51);
   //video = createVideo("../../videos/Bicep_Curls.mp4");//Bicep_Curls.mp4,"../../videos/Bicep_Curls.mp4"
 
-     video = createVideo("videos/frontside1.mp4");
-   // video =  createCapture(VIDEO);
+     //video = createVideo("videos/frontside1.mp4");
+   video =  createCapture(VIDEO);
    // video = createVideo("../../videos/myOwn.mp4");
 
-    //video.size(500,600);
+    //video.size(820,500);
     startAndStopButton.mousePressed(functionStartAndStopRecording);
     button.mousePressed(toggleVid);
     saveModelButton.mousePressed(SaveDataset);

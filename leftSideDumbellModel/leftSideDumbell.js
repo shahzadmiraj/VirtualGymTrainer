@@ -13,10 +13,10 @@ var StartExcercise="";
 function draw()
 {
     background(255);
-    video.loadPixels();
+   // video.loadPixels();
     var xScale=0;
     image(video, 0, 0, video.width, video.height);
-   // image(video,0-xScale,0,video.width,video.height);
+    // image(video,0-xScale,0,video.width,video.height);
     if(pose&&(state=="collection"))
     {
         // console.log(pose);
@@ -25,17 +25,17 @@ function draw()
         }
 
         textString="";
-        if((pose.rightHip.confidence*100>accuracyOfPoseNet)&&(pose.rightShoulder.confidence*100>accuracyOfPoseNet)&&(pose.rightElbow.confidence*100>accuracyOfPoseNet)&&(pose.rightWrist.confidence*100>accuracyOfPoseNet))
+        if((pose.leftHip.confidence*100>accuracyOfPoseNet)&&(pose.leftShoulder.confidence*100>accuracyOfPoseNet)&&(pose.leftElbow.confidence*100>accuracyOfPoseNet)&&(pose.leftWrist.confidence*100>accuracyOfPoseNet))
         {
             //good accuracy os pose net
 
-            var standing = Math.abs( findANGLEComplete(pose.rightHip.x, pose.rightHip.y, pose.rightShoulder.x, pose.rightShoulder.y));
-            if ((standing > 80) && (standing < 109))
+            var standing = Math.abs( findANGLEComplete(pose.leftHip.x, pose.leftHip.y, pose.leftShoulder.x, pose.leftShoulder.y));
+            if ((standing > 80) && (standing <109))
             {
                 //user is  staight position
 
                 //textString="Good Standing position=" + standing+'",";
-                var ArmISStill = Math.abs(findANGLEComplete(pose.rightElbow.x, pose.rightElbow.y, pose.rightShoulder.x, pose.rightShoulder.y));
+                var ArmISStill = Math.abs(findANGLEComplete(pose.leftElbow.x, pose.leftElbow.y, pose.leftShoulder.x, pose.leftShoulder.y));
 
                 if((ArmISStill > 70) && (ArmISStill < 115))
                 {
