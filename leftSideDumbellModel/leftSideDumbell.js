@@ -10,6 +10,7 @@ var previousText="";
 var textString="";
 var Angle_Between_RightWrist_RightShoulder=0;
 var StartExcercise="";
+
 function draw()
 {
     background(255);
@@ -17,12 +18,10 @@ function draw()
     var xScale=0;
     image(video, 0, 0, video.width, video.height);
     // image(video,0-xScale,0,video.width,video.height);
-    if(pose&&(state=="collection"))
+    if(pose)
     {
         // console.log(pose);
-        let inputs= {
-            inputNames:1
-        }
+
 
         textString="";
         if((pose.leftHip.confidence*100>accuracyOfPoseNet)&&(pose.leftShoulder.confidence*100>accuracyOfPoseNet)&&(pose.leftElbow.confidence*100>accuracyOfPoseNet)&&(pose.leftWrist.confidence*100>accuracyOfPoseNet))
