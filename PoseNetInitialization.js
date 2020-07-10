@@ -12,7 +12,7 @@ let startAndStopButton;
 let saveModelButton;
 let text;
 let inputNames = ["noseX","noseY","leftEyeX","leftEyeY","rightEyeX","rightEyeY", "leftEarX","leftEarY", "rightEarX","rightEarY", "leftShoulderX","leftShoulderY", "rightShoulderX","rightShoulderY", "leftElbowX","leftElbowY","rightElbowX","rightElbowY","leftWristX","leftWristY","rightWristX","rightWristY","leftHipX","leftHipY","rightHipX","rightHipY","leftKneeX","leftKneeY","rightKneeX","rightKneeY","leftAnkleX","leftAnkleY","rightAnkleX","rightAnkleY"]
-
+var canvas;
 function ButtonCreatesAtTopOfPage(text)
 {
     let btn = createButton(text);
@@ -32,7 +32,7 @@ function  preload() {
 function setup()
 {
     text=createElement('h1', 'right elbow');
-   createCanvas(1020,1200);
+    canvas=createCanvas(1020,1200);
    background(51);
   //video = createVideo("../../videos/Bicep_Curls.mp4");//Bicep_Curls.mp4,"../../videos/Bicep_Curls.mp4"
 
