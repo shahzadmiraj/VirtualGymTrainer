@@ -1,6 +1,6 @@
 
 
-let accuracyOfPoseNet=10;
+let accuracyOfPoseNet=20;
 var Previouse_Angle_Between_RightWrist_RightShoulder=200;
 var stepDirection="UpWordDirection";
 var InitialMovement="YesInitialMovement";
