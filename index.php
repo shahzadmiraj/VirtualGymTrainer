@@ -1,3 +1,8 @@
+<?php
+$Excercise=$_GET['Excercise'];
+
+?>
+
 <!DOCTYPE html>
 <head>
     <title>VGT|HOME</title>
@@ -107,6 +112,7 @@
 </head>
 
 <body>
+<input hidden type="text" id="Excercise" value="<?php echo $Excercise;?>">
 
 
 
@@ -194,8 +200,25 @@
 
 <script src="PoseNetInitialization.js"></script>
 
-<script src="leftSideDumbellModel/leftSideDumbell.js"></script>
-<script src="leftSideDumbellModel/leftSideFunction.js"></script>
+<!--<script src="leftSideDumbellModel/leftSideDumbell.js"></script>
+<script src="leftSideDumbellModel/leftSideFunction.js"></script>-->
+
+
+<?php
+
+if($Excercise=="Left_side_bicep")
+{
+    echo '<script src="leftSideDumbellModel/leftSideDumbell.js"></script>
+<script src="leftSideDumbellModel/leftSideFunction.js"></script>';
+}
+else
+{
+    echo '<script src="RightSideDumbellModel/DumbellAI.js"></script>
+    <script src="MathFunction/excerciseFunctions.js"></script>';
+}
+?>
+
+
 
 </body>
 </html>

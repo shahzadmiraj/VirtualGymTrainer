@@ -70,7 +70,11 @@
     }
     function IsArmMoveCorrectlyInExcercise()
     {
+
+
+
         Angle_Between_RightWrist_RightShoulder= angle(pose.leftWrist.x, pose.leftWrist.y,pose.leftElbow.x, pose.leftElbow.y,pose.leftShoulder.x, pose.leftShoulder.y)[1];
+
         if((Angle_Between_RightWrist_RightShoulder<180) && (Angle_Between_RightWrist_RightShoulder>30))
         {
             return true;
@@ -104,18 +108,25 @@
 
 
     function PoseNetCalculateAccuracy() {
+
+
         textString+="<br> Pose Net accuracy not good<br>";
-        if(pose.leftHip.confidence*100<accuracyOfPoseNet)
-        {
-            textString+="leftHip ="+pose.leftHip.confidence*100;
-        }
-        if(pose.leftShoulder.confidence*100<accuracyOfPoseNet)
-        {
-            textString+=",leftShoulder ="+pose.leftShoulder.confidence*100;
-        }
-        if(pose.leftWrist.confidence*100<accuracyOfPoseNet)
-        {
-            textString+=",leftWrist ="+pose.leftWrist.confidence*100;
-        }
+
+                //Left_side_bicep
+                if(pose.leftHip.confidence*100<accuracyOfPoseNet)
+                {
+                    textString+="leftHip ="+pose.leftHip.confidence*100;
+                }
+                if(pose.leftShoulder.confidence*100<accuracyOfPoseNet)
+                {
+                    textString+=",leftShoulder ="+pose.leftShoulder.confidence*100;
+                }
+                if(pose.leftWrist.confidence*100<accuracyOfPoseNet)
+                {
+                    textString+=",leftWrist ="+pose.leftWrist.confidence*100;
+                }
+
+
+
 
     }

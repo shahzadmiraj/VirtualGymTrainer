@@ -1,6 +1,6 @@
 
 
-let accuracyOfPoseNet=20;
+let accuracyOfPoseNet=10;
 var Previouse_Angle_Between_RightWrist_RightShoulder=200;
 var stepDirection="UpWordDirection";
 var InitialMovement="YesInitialMovement";
@@ -37,13 +37,23 @@ function draw()
         {
             //good accuracy os pose net
 
+
+
+
+
+
             var standing = Math.abs( findANGLEComplete(pose.leftHip.x, pose.leftHip.y, pose.leftShoulder.x, pose.leftShoulder.y));
+
+
             if ((standing > 75) && (standing <109))
             {
                 //user is  staight position
 
                 //textString="Good Standing position=" + standing+'",";
-                var ArmISStill = Math.abs(findANGLEComplete(pose.leftElbow.x, pose.leftElbow.y, pose.leftShoulder.x, pose.leftShoulder.y));
+
+
+
+               var  ArmISStill = Math.abs(findANGLEComplete(pose.leftElbow.x, pose.leftElbow.y, pose.leftShoulder.x, pose.leftShoulder.y));
 
                 if((ArmISStill > 70) && (ArmISStill < 115))
                 {

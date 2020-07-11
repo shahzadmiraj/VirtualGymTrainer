@@ -1,11 +1,9 @@
 
-
-
 function warningOrError()
 {
     if(CountOfWarningMovingArm<10)
     {
-        textString+="<br>Warning please when "+stepDirection+" PreviousAngle="+Previouse_Angle_Between_RightWrist_RightShoulder+"CurrentAngle="+Angle_Between_RightWrist_RightShoulder;
+        textString+="<br> Warning not moving arm";
         CountOfWarningMovingArm=CountOfWarningMovingArm+1;
     }
     else
@@ -18,13 +16,29 @@ function warningOrError()
 
 }
 
-function SetInitialPosition()
+function SetInitialPosition(error)
 {
-    textString+="Again Start with  initial position,"+Angle_Between_RightWrist_RightShoulder;
+
+    textString+="<br> Start again <br>";
     CountOfWarningMovingArm=0;
     InitialMovement="YesInitialMovement";
     stepDirection="UpWordDirection";
     StartExcercise="";
+
+    $(document).ready(function () {
+
+        if(error=="Error")
+        {
+            $('#arrow').html('<i class="fa fa-arrow-down fa-5x text-danger" aria-hidden="true"></i>');
+        }
+        else
+        {
+            $('#arrow').html('<i class="fa fa-arrow-up fa-5x text-primary" aria-hidden="true"></i>');
+        }
+
+    });
+
+
 }
 
 function IsCurrentAngleIncrease()
@@ -56,7 +70,12 @@ function IsAngleTouchHip()
 }
 function IsArmMoveCorrectlyInExcercise()
 {
+
+
+
     Angle_Between_RightWrist_RightShoulder= angle(pose.rightWrist.x, pose.rightWrist.y,pose.rightElbow.x, pose.rightElbow.y,pose.rightShoulder.x, pose.rightShoulder.y)[1];
+
+
     if((Angle_Between_RightWrist_RightShoulder<180) && (Angle_Between_RightWrist_RightShoulder>30))
     {
         return true;
@@ -90,17 +109,25 @@ function IsMarginApplyAtDowndirection()
 
 
 function PoseNetCalculateAccuracy() {
-    textString+="<br>Pose Net accuracy not good<br>";
-    if(pose.rightHip.confidence*100<accuracyOfPoseNet)
-    {
-        textString+="rightHip ="+pose.rightHip.confidence*100;
-    }
-    if(pose.rightShoulder.confidence*100<accuracyOfPoseNet)
-    {
-        textString+=",rightShoulder ="+pose.rightShoulder.confidence*100;
-    }
-    if(pose.rightWrist.confidence*100<accuracyOfPoseNet)
-    {
-        textString+=",rightWrist ="+pose.rightWrist.confidence*100;
-    }
+
+
+    textString+="<br> Pose Net accuracy not good<br>";
+
+            // right_side_bicep
+
+            if(pose.rightHip.confidence*100<accuracyOfPoseNet)
+            {
+                textString+="rightHip ="+pose.rightHip.confidence*100;
+            }
+            if(pose.rightShoulder.confidence*100<accuracyOfPoseNet)
+            {
+                textString+=",rightShoulder ="+pose.rightShoulder.confidence*100;
+            }
+            if(pose.rightWrist.confidence*100<accuracyOfPoseNet)
+            {
+                textString+=",rightWrist ="+pose.rightWrist.confidence*100;
+            }
+
+
+
 }
